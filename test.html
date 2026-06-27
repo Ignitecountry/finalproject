@@ -1,0 +1,1114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Utah Dance Fest — The 2026 Games</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+THEME CONFIG — swap these variables each year to retheme!
+============================================================
+2026 Theme: Hunger Games
+Fonts: Cinzel Decorative (headline), Cinzel (subhead), Raleway (body)
+Next year: swap --theme-gold, --theme-accent, fonts, --theme-hero-tagline
+============================================================ */
+:root{
+--g:#C9A84C; --gl:#E8C96B; --gd:#8B6914;
+--dark:#0A0905; --char:#1A1710; --mid:#2A2418;
+--red:#8B1A1A; --fire:#E8441A;
+--txt:#F0E6CC; --muted:#A89060;
+--hf:'Cinzel Decorative',serif;
+--bf:'Cinzel',serif;
+--sf:'Raleway',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--txt);font-family:var(--sf);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* ---- NAV ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:1rem 3rem;transition:background .3s,border .3s}
+nav.scrolled{background:rgba(10,9,5,.97);border-bottom:1px solid rgba(201,168,76,.2)}
+.nav-logo{font-family:var(--hf);font-size:.9rem;color:var(--g);text-decoration:none}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-family:var(--bf);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--g)}
+.nav-cta{background:var(--g)!important;color:var(--dark)!important;padding:.45rem 1.2rem;font-weight:700!important}
+.nav-cta:hover{background:var(--gl)!important}
+
+/* ---- BUTTONS ---- */
+.btn-p{display:inline-block;padding:.9rem 2.4rem;background:var(--g);color:var(--dark);font-family:var(--bf);font-size:.78rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+.btn-p:hover{background:var(--gl);transform:translateY(-2px)}
+.btn-s{display:inline-block;padding:.9rem 2.4rem;border:1px solid rgba(201,168,76,.5);color:var(--g);font-family:var(--bf);font-size:.78rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;transition:all .25s;background:none;cursor:pointer}
+.btn-s:hover{border-color:var(--g);background:rgba(201,168,76,.08);transform:translateY(-2px)}
+
+/* ---- SECTION BASE ---- */
+section{padding:5.5rem 2rem;position:relative}
+.si{max-width:1100px;margin:0 auto}
+.ey{font-family:var(--bf);font-size:.65rem;letter-spacing:.4em;text-transform:uppercase;color:var(--g);margin-bottom:.8rem}
+.st{font-family:var(--hf);font-size:clamp(1.7rem,4vw,2.8rem);color:var(--gl);line-height:1.1;margin-bottom:1.2rem}
+.dv{width:60px;height:1px;background:var(--g);opacity:.45;margin:1.2rem auto}
+.center{text-align:center}
+
+/* ===========================================================
+FIRE CANVAS — full-width animated flame wall
+=========================================================== */
+.fire-wall{position:relative;height:100px;overflow:hidden;pointer-events:none}
+.fire-wall canvas{display:block;width:100%;height:100%}
+
+
+
+/* ember particles */
+.embers{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.ember{position:absolute;bottom:-10px;border-radius:50%;animation:float-up linear infinite;opacity:0}
+@keyframes float-up{0%{transform:translateY(0) translateX(0) scale(1);opacity:.9}50%{opacity:.5;transform:translateY(-45vh) translateX(var(--dx)) scale(.7)}100%{transform:translateY(-95vh) translateX(calc(var(--dx)*1.5)) scale(.2);opacity:0}}
+
+/* fire ring */
+.fire-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:680px;height:680px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(201,168,76,.1) 0%,rgba(139,26,26,.15) 30%,rgba(139,26,26,.05) 55%,transparent 70%);animation:pr 4s ease-in-out infinite;pointer-events:none;z-index:0}
+@keyframes pr{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.07);opacity:1}}
+
+/* ---- HERO ---- */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 6rem;overflow:hidden}
+/* Add the background image */
+.hero{background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('pics/shimmer'); /* Replace with your image path */
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+.hero-content{position:relative;z-index:2}
+.h-ey{font-family:var(--bf);font-size:1.5rem;letter-spacing:.45em;text-transform:uppercase;color:var(--g);margin-bottom:1.5rem;animation:fi 1s ease .2s both}
+.h-t1{font-family:var(--hf);font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.05;color:var(--gl);text-shadow:0 0 80px rgba(201,168,76,.5),0 4px 20px rgba(0,0,0,.8);margin-bottom:.4rem;animation:fi 1s ease .4s both}
+.h-t2{font-family:var(--hf);font-size:clamp(1.1rem,2.5vw,1.9rem);color:var(--red);letter-spacing:.08em;margin-bottom:2rem;animation:fi 1s ease .6s both}
+.h-tag{font-family:var(--bf);font-style:italic;font-size:1.5rem;color:var(--muted);letter-spacing:.1em;margin-bottom:3rem;animation:fi 1s ease .8s both}
+.h-badge{display:inline-flex;flex-direction:column;align-items:center;border:1px solid rgba(201,168,76,.4);padding:1.1rem 2.8rem;margin-bottom:2.8rem;animation:fi 1s ease 1s both}
+.h-badge .dl{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--g);margin-bottom:.25rem}
+.h-badge .dm{font-family:var(--bf);font-size:1.35rem;color:var(--txt);letter-spacing:.07em}
+.h-badge .dloc{font-size:1rem;color:var(--muted);letter-spacing:.2em;margin-top:.15rem}
+.h-btns{display:flex;gap:1.1rem;flex-wrap:wrap;justify-content:center;animation:fi 1s ease 1.2s both}
+@keyframes fi{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.scroll-arrow{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s ease infinite;color:var(--g);font-size:1.4rem;cursor:pointer;z-index:2}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+
+/* ---- COUNTDOWN ---- */
+.cd-sec{background:var(--char);border-top:1px solid rgba(201, 168, 76, 0.084);border-bottom:1px solid rgba(201,168,76,.15);padding:2.8rem 2rem}
+.cd-grid{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+.cd-unit{text-align:center;min-width:80px}
+.cd-num{font-family:var(--hf);font-size:5rem;color:var(--g);line-height:1;display:block}
+.cd-lbl{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+.cd-sep{font-family:var(--hf);font-size:2.5rem;color:rgba(201,168,76,.25);align-self:center;padding-bottom:.4rem}
+
+/* ---- ABOUT ---- */
+.about-sec{background:var(--dark)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-frame{border:1px solid rgba(201,168,76,.28);padding:2.5rem 2rem;position:relative}
+.about-frame::before{content:'';position:absolute;top:-8px;left:-8px;right:8px;bottom:8px;border:1px solid rgba(201,168,76,.1);pointer-events:none}
+.sn{font-family:var(--hf);font-size:2.4rem;color:var(--g);display:block}
+.sd{font-size:.82rem;color:var(--muted)}
+.si-stat{margin-bottom:1.8rem}
+.about-text p{color:rgba(240,230,204,.8);margin-bottom:1.1rem;font-size:.93rem}
+
+/* fire torch divider */
+.torch-div{display:flex;align-items:center;gap:1.2rem;margin-bottom:.6rem}
+.tl{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.28),transparent)}
+.tf{font-size:1.3rem}
+
+/* ---- EXPERIENCES ---- */
+.exp-sec{background:var(--char)}
+.exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.4rem;margin-top:2.8rem}
+.exp-card{border:1px solid rgba(201,168,76,.18);padding:1.8rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;background:rgba(57, 44, 9, 0.349)}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--fire),var(--g),var(--gl));transform:scaleX(0);transition:transform .35s;transform-origin:left}
+.exp-card:hover{border-color:rgba(201, 168, 76, 0.696);transform:translateY(-4px)}
+.exp-card:hover::before{transform:scaleX(1)}
+.exp-icon{font-size:1.9rem;margin-bottom:.9rem;display:block}
+.exp-title{font-family:var(--bf);font-size:.85rem;letter-spacing:.1em;color:var(--gl);margin-bottom:.7rem;text-transform:uppercase}
+.exp-desc{font-size:.83rem;color:rgba(240,230,204,.68);line-height:1.6}
+
+/* ===========================================================
+JUDGES / MENTORS / AMBASSADORS
+=========================================================== */
+.judges-sec{background:var(--char);position:relative;overflow:hidden}
+.judges-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(139,26,26,.14) 0%,transparent 65%);pointer-events:none}
+.mentors-sec{background:var(--dark);position:relative;overflow:hidden}
+.mentors-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(201,168,76,.08) 0%,transparent 65%);pointer-events:none}
+
+/* Section phoenix watermark */
+.sec-phoenix{position:absolute;right:-60px;top:50%;transform:translateY(-50%);opacity:.04;pointer-events:none;animation:feather-pulse 6s ease-in-out infinite}
+.sec-phoenix-l{position:absolute;left:-60px;top:50%;transform:translateY(-50%) scaleX(-1);opacity:.04;pointer-events:none;animation:feather-pulse 6s ease-in-out 1s infinite}
+
+.people-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1.4rem;margin-top:2.5rem}
+
+.person-card{border:1px solid rgba(201,168,76,.17);background:rgba(201,168,76,.02);overflow:hidden;transition:transform .3s,border-color .3s;position:relative;display:flex;flex-direction:column}
+.person-card {
+    border: 1px solid rgba(201, 168, 76, 0.17);
+    background: rgba(201, 168, 76, 0.02);
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px; /* Fixed width for all cards */
+    height: 300px; /* Fixed height for all cards */
+    text-align: center;
+}
+
+.person-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.48)}
+.person-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--fire) 20%,var(--g) 50%,var(--gl) 75%,transparent);transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.person-card:hover::after{transform:scaleX(1)}
+
+.p-avatar{width:100%;aspect-ratio:1;background:var(--mid);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.p-avatar img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.p-initials{position:absolute;font-family:var(--hf);font-size:1.8rem;color:var(--g);z-index:1;letter-spacing:.05em}
+.p-avatar-bg{position:absolute;inset:0;background:linear-gradient(135deg,#1a1710 0%,#2a2418 50%,#1a1710 100%);background-size:200% 200%;animation:shimmer 3.5s ease infinite}
+@keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+/* fire glow at base of avatar */
+.p-fire-bar{position:absolute;bottom:0;left:0;right:0;height:36px;background:linear-gradient(to top,rgba(139,26,26,.55),rgba(232,68,26,.15),transparent);z-index:2}
+/* mini phoenix SVG watermark inside avatar */
+.p-avatar .p-phoenix{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0;opacity:.08}
+
+.p-info{padding:1.1rem 1.1rem 1.3rem;flex:1}
+.p-role{font-family:var(--bf);font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--g);margin-bottom:.25rem}
+.p-name{font-family:var(--bf);font-size:.95rem;color:var(--txt);font-weight:600;margin-bottom:.35rem;line-height:1.2}
+.p-spec{font-size:.76rem;color:var(--muted);line-height:1.5;margin-bottom:.55rem}
+.p-tag{display:inline-block;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.16rem .55rem;border:1px solid;font-family:var(--bf)}
+.p-tag.jt{border-color:rgba(139,26,26,.5);color:#c97070}
+.p-tag.mt{border-color:rgba(201,168,76,.4);color:var(--g)}
+.p-tag.at{border-color:rgba(90,155,90,.4);color:#7aaa7a}
+
+/* "more coming" add card */
+.add-card{border:1px dashed rgba(201,168,76,.22);background:transparent;align-items:center;justify-content:center;min-height:280px;text-align:center;padding:2rem;cursor:default}
+.add-card:hover{border-color:rgba(201,168,76,.45);background:rgba(201,168,76,.03)}
+.add-card::after{display:none}
+.add-icon{font-size:2.2rem;color:rgba(201,168,76,.28);margin-bottom:.7rem;display:block;font-family:var(--bf)}
+.add-lbl{font-family:var(--bf);font-size:.67rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);line-height:1.8}
+
+/* subsection label */
+.sub-lbl{margin-top:3rem;margin-bottom:.2rem;font-family:var(--bf);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;display:flex;align-items:center;gap:1rem}
+.sub-lbl::before,.sub-lbl::after{content:'';flex:1;height:1px;background:rgba(201,168,76,.15)}
+.sub-lbl.red{color:var(--red)}
+.sub-lbl.gold{color:var(--g)}
+.sub-lbl.green{color:#7aaa7a}
+
+/* ---- PASSES ---- */
+.passes-sec{background:var(--dark);position:relative}
+.passes-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(139,26,26,.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 50%,rgba(201,168,76,.06) 0%,transparent 50%);pointer-events:none}
+.passes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1.4rem;margin-top:2.8rem;align-items:stretch}
+.pass-card{border:1px solid rgba(201,168,76,.2);padding:2.3rem 1.8rem;display:flex;flex-direction:column;position:relative;transition:transform .3s;background:var(--char)}
+.pass-card:hover{transform:translateY(-5px)}
+.pass-card.feat{border-color:var(--g);background:var(--mid);transform:scale(1.025)}
+.pass-card.feat:hover{transform:scale(1.025) translateY(-5px)}
+.pass-badge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--g);color:var(--dark);font-family:var(--bf);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.3rem 1.4rem;white-space:nowrap}
+.pass-dist{font-family:var(--bf);font-size:.58rem;letter-spacing:.3em;color:var(--red);text-transform:uppercase;margin-bottom:.4rem}
+.pass-name{font-family:var(--hf);font-size:1.3rem;color:var(--gl);margin-bottom:.4rem;line-height:1.1}
+.pass-tag{font-size:.78rem;color:var(--muted);font-style:italic;margin-bottom:1.3rem;padding-bottom:1.3rem;border-bottom:1px solid rgba(201,168,76,.13)}
+.pass-price{display:flex;align-items:baseline;gap:.25rem;margin-bottom:.4rem}
+.pass-cur{font-size:1.1rem;color:var(--g);font-family:var(--bf)}
+.pass-amt{font-family:var(--hf);font-size:2.8rem;color:var(--g);line-height:1}
+.pass-save{font-size:.72rem;color:var(--red);margin-bottom:1.3rem;font-family:var(--bf);letter-spacing:.04em}
+.pass-feats{list-style:none;flex:1;margin-bottom:1.8rem}
+.pass-feats li{font-size:.8rem;color:rgba(240,230,204,.8);padding:.45rem 0;border-bottom:1px solid rgba(201,168,76,.06);display:flex;gap:.55rem;align-items:flex-start}
+.pass-feats li::before{content:'◆';color:var(--g);font-size:.48rem;margin-top:.32rem;flex-shrink:0}
+.pass-feats li.dim{color:rgba(240,230,204,.28)}
+.pass-feats li.dim::before{color:rgba(201,168,76,.18)}
+.pass-cta{display:block;text-align:center}
+.urgency{text-align:center;margin-top:2.5rem;font-family:var(--bf);font-size:.73rem;letter-spacing:.14em;color:var(--red);text-transform:uppercase}
+
+/* ---- SCHEDULE ---- */
+.sched-sec{background:var(--char)}
+.sched-tabs{display:flex;margin-bottom:2rem;border-bottom:1px solid rgba(201,168,76,.2)}
+.stab{font-family:var(--bf);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.4rem;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none}
+.stab.active{color:var(--g);border-bottom-color:var(--g)}
+.stab:hover{color:var(--gl)}
+.spanel{display:none}
+.spanel.active{display:block}
+.sitems{display:flex;flex-direction:column;gap:.7rem}
+.sitem{display:grid;grid-template-columns:95px 1fr auto;align-items:center;gap:1.4rem;padding:.9rem 1.3rem;border:1px solid rgba(201,168,76,.1);background:rgba(201,168,76,.02);transition:border-color .2s}
+.sitem:hover{border-color:rgba(201,168,76,.3)}
+.stime{font-family:var(--bf);font-size:.73rem;color:var(--g);letter-spacing:.1em}
+.sname{font-size:.86rem;color:var(--txt)}
+.sname small{display:block;font-size:.73rem;color:var(--muted)}
+.stype{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;padding:.18rem .65rem;border:1px solid}
+.stype.w{color:var(--g);border-color:rgba(201,168,76,.4)}
+.stype.c{color:var(--red);border-color:rgba(139,26,26,.5)}
+.stype.s{color:#5a9a5a;border-color:rgba(90,154,90,.4)}
+.stype.d{color:#7a7aaa;border-color:rgba(122,122,170,.4)}
+
+/* ---- TESTIMONIALS ---- */
+.testi-sec{background:var(--dark)}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.4rem;margin-top:2.8rem}
+.tcard{border-left:2px solid var(--g);padding:1.4rem 1.8rem;background:rgba(201,168,76,.03)}
+.tcard::before{content:'"';color:var(--g);font-size:2rem;line-height:0;vertical-align:-.5em;margin-right:.2rem;font-family:var(--hf)}
+.ttext{font-style:italic;font-size:.88rem;color:rgba(240,230,204,.82);line-height:1.8;margin-bottom:.9rem}
+.tauthor{font-family:var(--bf);font-size:.68rem;letter-spacing:.14em;color:var(--g);text-transform:uppercase}
+
+/* ---- FAQ ---- */
+.faq-sec{background:var(--char)}
+.faq-list{margin-top:2.8rem;max-width:760px;margin-left:auto;margin-right:auto}
+.faq-item{border-bottom:1px solid rgba(201,168,76,.14)}
+.faq-q{font-family:var(--bf);font-size:1rem;letter-spacing:.04em;color:var(--txt);padding:1.2rem 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:.9rem;background:none;border:none;width:100%;text-align:left;transition:color .2s}
+.faq-q:hover{color:var(--g)}
+.faq-arr{color:var(--g);font-size:.68rem;transition:transform .2s;flex-shrink:0}
+.faq-q.open .faq-arr{transform:rotate(180deg)}
+.faq-a{font-size:.83rem;color:rgba(240,230,204,.68);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0}
+.faq-a.open{max-height:300px;padding-bottom:1.4rem}
+
+/* ---- FINAL CTA ---- */
+.fcta{background:var(--mid);border-top:1px solid rgba(201,168,76,.2);border-bottom:1px solid rgba(201,168,76,.2);text-align:center;padding:7rem 2rem;position:relative;overflow:hidden}
+.fcta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,.09) 0%,transparent 65%);pointer-events:none}
+.fcta-t{font-family:var(--hf);font-size:clamp(2rem,5vw,3.8rem);color:var(--gl);margin-bottom:.9rem}
+.fcta-s{font-size:.97rem;color:rgba(240,230,204,.68);max-width:540px;margin:0 auto 2.3rem}
+
+/* ---- FOOTER ---- */
+footer{background:#050503;padding:2.8rem 2rem;text-align:center;border-top:1px solid rgba(201,168,76,.1)}
+.flogo{font-family:var(--hf);font-size:1.1rem;color:var(--g);margin-bottom:.9rem}
+.flinks{display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.3rem;list-style:none}
+.flinks a{font-size:.73rem;letter-spacing:.1em;color:var(--muted);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--g)}
+.fcopy{font-size:.7rem;color:rgba(168,144,96,.38);letter-spacing:.04em}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/hero-bg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* About Section */
+.about-sec {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('pics/flames.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Experiences Section */
+.exp-sec {
+    background: linear-gradient(rgba(0, 0, 0, 0.603), rgba(0, 0, 0, 0.584)), 
+                url('pics/arena.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Mentors Section */
+.mentors-sec {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/mentors-bg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Judges Section */
+.judges-sec {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/judges-bg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Passes Section */
+.passes-sec {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/passes-bg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Schedule Section */
+.sched-sec {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('pics/smoke.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Testimonials Section */
+.testi-sec {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/testimonials-bg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* FAQ Section */
+.faq-sec {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/faq-bg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Final CTA Section */
+.fcta {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('images/final-cta-bg.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.detailed-schedule-btn {
+    background: rgba(171, 33, 33, 0.14) ; /* Change this to your desired background color */
+    color:  rgba(201,168,76,.5); /* Change this to your desired text color */
+    font-family: var(--bf); /* Optional: Keep the same font style */
+    font-size: 0.85rem; /* Optional: Adjust font size */
+    padding: 0.8rem 1.5rem; /* Optional: Adjust padding */
+    border: 1px solid #C9A84C; /* Optional: Add a border */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    text-transform: uppercase; /* Optional: Make text uppercase */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Ensure it behaves like a button */
+    transition: all 0.3s ease; /* Add a hover effect */
+}
+
+.detailed-schedule-btn:hover {
+    background: #C9A84C; /* Change hover background color */
+    color: #0A0905; /* Change hover text color */
+    transform: translateY(-2px); /* Add a slight lift effect */
+}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:768px){
+nav{padding:1rem 1.4rem}
+.nav-links{display:none}
+.about-grid{grid-template-columns:1fr;gap:2.8rem}
+.pass-card.feat{transform:scale(1)}
+.sitem{grid-template-columns:80px 1fr}
+.stype{display:none}
+.cd-sep{display:none}
+.ph-left,.ph-right{display:none}
+.sec-phoenix,.sec-phoenix-l{display:none}
+.people-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nb">
+<a class="nav-logo" href="#">Utah Dance Fest</a>
+<ul class="nav-links">
+<li><a href="#about">About</a></li>
+<li><a href="#passes">Passes</a></li>
+<li><a href="#schedule">Schedule</a></li>
+<li><a href="#passes" class="nav-cta">Get Passes</a></li>
+</ul>
+</nav>
+
+<!-- ============================================================ HERO ============================================================ -->
+<section class="hero" id="home">
+<div class="fire-ring"></div>
+<div class="embers" id="embers"></div>
+
+<div class="fire-ring"></div>
+<div class="embers" id="embers"></div>
+
+<div class="hero-content">
+<p class="h-ey">Ignite Country Fusion Presents</p>
+<h1 class="h-t1">Utah Dance Fest</h1>
+<!-- COUNTDOWN -->
+<div class="cd-sec" id="cds">
+    <div class="si center">
+    <p class="ey" style="margin-bottom:1.4rem;">The Games Begin In</p>
+    <div class="cd-grid">
+    <div class="cd-unit"><span class="cd-num" id="cdd">--</span><span class="cd-lbl">Days</span></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-unit"><span class="cd-num" id="cdh">--</span><span class="cd-lbl">Hours</span></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-unit"><span class="cd-num" id="cdm">--</span><span class="cd-lbl">Minutes</span></div>
+    <span class="cd-sep">:</span>
+    <div class="cd-unit"><span class="cd-num" id="cds2">--</span><span class="cd-lbl">Seconds</span></div>
+    </div>
+    </div>
+    </div>
+    <br>
+    <br>
+<p class="h-tag">May the odds be ever in your favor</p>
+<div class="h-badge">
+<span class="dl">The Arena Opens</span>
+<span class="dm">September 17–20, 2026</span>
+<span class="dloc">505 E Lakeview Pkwy; Provo, Utah</span>
+</div>
+<div class="h-btns">
+<a href="#passes" class="btn-p">Claim Your Pass</a>
+<a href="#about" class="btn-s">Learn More</a>
+</div>
+</div>
+<div class="scroll-arrow" onclick="document.getElementById('cds').scrollIntoView({behavior:'smooth'})">▼</div>
+</section>
+
+
+
+
+<!-- ABOUT -->
+<section class="about-sec" id="about">
+<div class="si">
+<div class="about-grid">
+<div>
+<div class="about-frame">
+<div class="si-stat"><span class="sn">4</span><span class="sd">Full Days of Dancing</span></div>
+<div class="si-stat"><span class="sn">30+</span><span class="sd">Workshops, Comps, Classes & Events</span></div>
+<div class="si-stat"><span class="sn">Utah's #1</span><span class="sd">Country Dance Convention Festival</span></div>
+<div class="si-stat" style="margin-bottom:0"><span class="sn">All Levels</span><span class="sd">From Newcomers to Advanced</span></div>
+</div>
+</div>
+<div class="about-text">
+<p class="ey">About The Event</p>
+<h2 class="st">Utah's First-Ever Country Dance Convention</h2>
+<div class="dv" style="margin-left:0"></div>
+<p>Enter the arena. Utah Dance Fest is Utah's first ever country swing convention that started in September of 2024. It is a premier country swing and line dance convention — four days of non-stop dancing, learning, competing, and connecting with the best in the region.</p>
+<p>With Country Swing and Line Dance as our main events, we are now adding West Coast Swing, Progressive, Slotted, and Zouk — if you love dancing and learning, this is your event. Come ready to sweat, laugh, learn from world-class instructors, and make memories that last all year.</p>
+<p>This year's theme? <strong style="color:var(--g);font-family:var(--bf);">The Hunger Games.</strong> Districts named. Champions crowned. The dance floor is your arena!</p>
+<a href="#passes" class="btn-p" style="margin-top:1rem;display:inline-block">Volunteer as Tribute →</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="exp-sec" id="experiences">
+<div class="si">
+<p class="ey center">What Awaits You</p>
+<h2 class="st center">Inside The Arena</h2>
+<div class="dv"></div>
+<div class="exp-grid">
+<div class="exp-card"><span class="exp-icon"></span><div class="exp-title">Partner Dance Workshops</div><p class="exp-desc">Country Swing, Progressive, West Coast Swing, and more — taught by nationally recognized instructors.</p></div>
+<div class="exp-card"><span class="exp-icon"></span><div class="exp-title">Line Dance Workshops</div><p class="exp-desc">Beginner to advanced line dance choreography. Learn new dances and master the classics across multiple levels and styles.</p></div>
+<div class="exp-card"><span class="exp-icon"></span><div class="exp-title">Competitions</div><p class="exp-desc">Partner or line dance divisions. All skill levels from newcomer through champion. GA pass required to compete.</p></div>
+<div class="exp-card"><span class="exp-icon"></span><div class="exp-title">Nightly Social Dances</div><p class="exp-desc">After workshops and competitions, the real magic begins. Good music, late-night socials, and hours of dancing with your fellow tributes.</p></div>
+<div class="exp-card"><span class="exp-icon"></span><div class="exp-title">Artist Showcases & Demos</div><p class="exp-desc">Watch world-class performers bring down the house with demo performances that will leave you breathless and inspired.</p></div>
+<div class="exp-card"><span class="exp-icon"></span><div class="exp-title">Community & Connection</div><p class="exp-desc">Find your district and become part of Utah's fastest-growing country dance community. Create a network of dancers across the nation and spread the love of dancing. This is your tribe.</p></div>
+</div>
+</div>
+</section>
+
+
+<!-- SCHEDULE -->
+<section class="sched-sec" id="schedule">
+    <div class="si">
+    <p class="ey">The Arena Schedule</p>
+    <h2 class="st">Four Days of Action</h2>
+
+     <!-- Detailed Schedule Button -->
+     <a href="YOUR_SCHEDULE_PDF_LINK_HERE" 
+     target="_blank" 
+     class="detailed-schedule-btn">
+       Detailed Schedule Coming Soon
+  </a>
+  <div class="section-anchor" id="schedule"></div>
+
+  <div class="schedule-location-container">
+      
+    <div class="dv" style="margin-left:0"></div>
+    <div class="sched-tabs">
+    <button class="stab active" onclick="showDay('thu',this)">Thursday</button>
+    <button class="stab" onclick="showDay('fri',this)">Friday</button>
+    <button class="stab" onclick="showDay('sat',this)">Saturday</button>
+    <button class="stab" onclick="showDay('sun',this)">Sunday</button>
+    </div>
+    <div class="spanel active" id="day-thu">
+    <div class="sitems">
+    <div class="sitem"><div class="stime">4:00 PM</div><div class="sname">Gates Open - Check-In & Gear Up<small>Grab your wristband and find your districtk</small></div><span class="stype d">Registration</span></div>
+    <div class="sitem"><div class="stime">6:00 PM</div><div class="sname">Opening Ceremony — Enter the Arena<small>Tribute introductions & theme reveal</small></div><span class="stype d">Ceremony</span></div>
+    <div class="sitem"><div class="stime">7:00 PM</div><div class="sname">Welcome Social Dance<small>All styles, all levels — let the Games begin</small></div><span class="stype s">Social</span></div>
+    <div class="sitem"><div class="stime">11:00 PM</div><div class="sname">Late Night Open Floor<small>The music Keeps playing- dance as long as you dare</small></div><span class="stype s">Social</span></div>
+    </div>
+    </div>
+    <div class="spanel" id="day-fri">
+    <div class="sitems">
+    <div class="sitem"><div class="stime">9:00 AM</div><div class="sname">Check-in and Registration<small>Doors open for new arrivals - Continues unitil 6:30 PM</small></div><span class="stype w">Check-in</span></div>
+    <div class="sitem"><div class="stime">11:00 AM</div><div class="sname">Workshops<small>Workshops for Partner and Line Dancing</small></div><span class="stype w">Workshop</span></div>
+    <div class="sitem"><div class="stime">5:30 PM</div><div class="sname">Dinner Break<small>Take a break from dancing and refuel for the long night</small></div><span class="stype w">Dinner</span></div>
+    <div class="sitem"><div class="stime">6:30 PM</div><div class="sname">Competitions Begin<small>All levels take the floor - may the best dancers rise</small></div><span class="stype d">Competitions</span></div>
+    <div class="sitem"><div class="stime">10:30 PM - 2:00 AM</div><div class="sname">Friday Night Social Dance<small>Good music and dancing the night away with all your allies</small></div><span class="stype s">Social</span></div>
+</div>
+    </div>
+    <div class="spanel" id="day-sat">
+    <div class="sitems">
+        <div class="sitem"><div class="stime">9:00 AM</div><div class="sname">Check-in and Registration begins<small>Last chance to join the games - closes at 5:30 PM</small></div><span class="stype w">Check-in</span></div>
+        <div class="sitem"><div class="stime">10:00 AM</div><div class="sname">Workshops<small>Workshops for Partner and Line Dancing - sharpen your skills for thhe battles ahead</small></div><span class="stype w">Workshop</span></div>
+        <div class="sitem"><div class="stime">5:30 PM</div><div class="sname">Dinner Break<small>Take a break from dancing and refuel</small></div><span class="stype w">Dinner</span></div>
+        <div class="sitem"><div class="stime">6:30 PM</div><div class="sname">Competitions<small>For all Levels - leave it all on the dance floor, nothing held back</small></div><span class="stype d">Competitions</span></div>
+        <div class="sitem"><div class="stime">10:30 PM - 2:00 AM</div><div class="sname">Saturday Night Social Dance<small>The biggest social dance of the weekend - dance until the arena goes dark</small></div><span class="stype s">Social</span></div>
+    </div>
+    </div>
+    <div class="spanel" id="day-sun">
+    <div class="sitems">
+    <div class="sitem"><div class="stime">9:00 AM - 9:30 AM</div><div class="sname">Sunday Morning Devotional<small>A moment to center ourselves, honoring our faith before we enter the final arena</small></div><span class="stype w">Devotional</span></div>
+    <div class="sitem"><div class="stime">10:00 AM</div><div class="sname">Workshops<small>Last chance to learn and grow</small></div><span class="stype w">Workshop</span></div>
+    <div class="sitem"><div class="stime">6:30 PM</div><div class="sname">Competitions<small>The final battles - one last chance to shine</small></div><span class="stype d">Competitions</span></div>
+    <div class="sitem"><div class="stime">8:30 PM</div><div class="sname">Awards Ceremony — The Victor Rises<small>Champions crowned. Tributes honored, legends made</small></div><span class="stype d">Ceremony</span></div>
+    <div class="sitem"><div class="stime">9:30 PM</div><div class="sname">Closing Social & Farewell Dance<small>See you next year, tribute</small></div><span class="stype s">Social</span></div>
+    </div>
+    </div>
+    </div>
+    </section>
+
+
+
+    
+<!-- PASSES -->
+<section class="passes-sec" id="passes">
+    <div class="si">
+    <p class="ey center">Choose Your Fate</p>
+    <h2 class="st center">Select Your Pass</h2>
+    <div class="dv"></div>
+    <p class="center" style="color:var(--muted);font-size:.86rem;max-width:580px;margin:0 auto .8rem">Every tribute must choose their path into the arena. Three options — each one a different level of commitment to the Games.</p>
+    <div class="passes-grid">
+     
+    <!-- SOCIAL/SPECTATOR PASS -->
+    <div class="pass-card">
+    <p class="pass-dist">Spectator Tier</p>
+    <h3 class="pass-name">Social / Spectator Pass</h3>
+    <p class="pass-tag">Step inside the arena for a night — no commitment required</p>
+    <div class="pass-price"><span class="pass-cur">$</span><span class="pass-amt">15</span><span style="font-size:.8rem;color:var(--muted);margin-left:.4rem">/ night</span></div>
+    <p class="pass-save" style="color:var(--g)">vs. $20 at the door — save $5 by registering online</p>
+    <ul class="pass-feats">
+    <li>Entry after 6 PM on your chosen night (Fri, Sat, or Sun)</li>
+    <li>Full access to the evening social dance floor</li>
+    <li>Perfect for first-timers or friends tagging along</li>
+    <li class="dim">Workshops & daytime classes</li>
+    <li class="dim">Competition entry</li>
+    <li class="dim">VIP lounge access</li>
+    </ul>
+    <a href="https://www.danceplace.com/book/it/15853" target="_blank" class="btn-s pass-cta">Get Your Night Pass →</a>
+    </div>
+     
+    <!-- COMPETITORS/SOCIAL DAY PASS — FEATURED -->
+    <div class="pass-card feat">
+    <div class="pass-badge">Best Value — Compete & Dance All Night</div>
+    <p class="pass-dist">Competitor Tier</p>
+    <h3 class="pass-name">All Acess Weekend Pass</h3>
+    <p class="pass-tag">Built for dancers who came to compete and stay to celebrate</p>
+    <div class="pass-price"><span class="pass-cur">$</span><span class="pass-amt">115</span><span style="font-size:.8rem;color:var(--muted);margin-left:.4rem">+ $1.60 fee</span></div>
+    <p class="pass-save">Compete in your division + own the floor all night — one price</p>
+    <ul class="pass-feats">
+    <li>Full competition entry for the whole weekend</li>
+    <li>Evening social dance access after 6 PM</li>
+    <li>Pass Required to register for comps</li>
+    <li>Daytime workshops & technique classes</li>
+    <li class="dim">VIP lounge access</li>
+    </ul>
+    <a href="https://www.danceplace.com/book/it/15853" target="_blank" class="btn-p pass-cta">Enter the Arena →</a>
+    </div>
+     
+    <!-- CAPITOL ELITE VIP PASS -->
+    <div class="pass-card">
+    <p class="pass-dist">Capitol Tier</p>
+    <h3 class="pass-name">Capitol Elite — VIP Pass</h3>
+    <p class="pass-tag">The full Capitol experience — luxury perks all weekend long</p>
+    <div class="pass-price"><span class="pass-cur">$</span><span class="pass-amt">65</span><span style="font-size:.8rem;color:var(--muted);margin-left:.4rem">+ $3.66 fee</span></div>
+    <p class="pass-save" style="color:var(--red)">Limited availability — Capitol access is exclusive</p>
+    <ul class="pass-feats">
+    <li>Access to the exclusive VIP lounge all weekend</li>
+    <li>Complimentary drinks & snacks throughout</li>
+    <li>25% off all merchandise at the festival store</li>
+    <li>25% credit toward any private lesson</li>
+    <li>The ultimate way to experience the Games</li>
+    </ul>
+    <a href="https://www.danceplace.com/book/it/15853" target="_blank" class="btn-s pass-cta">Claim Capitol Status →</a>
+    </div>
+     
+    </div>
+     
+    <!-- All passes CTA -->
+    <div style="text-align:center;margin-top:2.5rem;padding:1.5rem;border:1px solid rgba(201,168,76,.15);background:rgba(201,168,76,.03)">
+    <p style="font-family:var(--bf);font-size:.72rem;letter-spacing:.15em;color:var(--g);text-transform:uppercase;margin-bottom:.5rem">More ticket options available</p>
+    <p style="font-size:.83rem;color:rgba(240,230,204,.65);margin-bottom:1rem">Individual night social passes, full weekend passes, student passes, Utah Resident passes, and more — view the complete lineup on Danceplace.</p>
+    <a href="https://www.danceplace.com/book/it/15853" target="_blank" class="btn-s" style="font-size:.72rem;padding:.7rem 1.8rem">View All Tickets on Danceplace →</a>
+    </div>
+     
+    <p class="urgency" style="margin-top:2rem">🔥 &nbsp; Register online and save — prices go up at the door &nbsp; 🔥</p>
+    <p style="text-align:center;margin-top:1.2rem;font-size:.90rem;color:var(--muted)">Questions? Call Franz: <a href="tel:8015541876" style="color:var(--g)">(801) 554-1876</a>  Loretta: <a href="tel:8015541876" style="color:var(--g)">(801) 554-1876</a> &nbsp;·&nbsp; <a href="https://www.instagram.com/utah_dancefest" target="_blank" style="color:var(--g)">@utah_dancefest</a></p>
+    &nbsp;·&nbsp; <a href="https://www.instagram.com/utah_dancefest" target="_blank" style="color:var(--g)">@utah_dancefest</a></p>
+    </div>
+    </section>
+
+
+
+<!-- ============================================================
+EVENT DIRECTOR & COORDINATORS — "THE CAPITOL"
+============================================================ -->
+<section class="mentors-sec" id="team" style="background:var(--char)">
+    <svg class="sec-phoenix" width="380" height="460" viewBox="0 0 310 400" fill="none"><ellipse cx="158" cy="222" rx="50" ry="72" fill="#C9A84C"/><path d="M128 195 C83 166 35 152 6 128 C26 143 60 156 90 172 Z" fill="#C9A84C"/><path d="M148 292 C133 335 118 366 94 397" fill="none" stroke="#C9A84C" stroke-width="4"/><path d="M158 297 C153 343 151 378 142 408" fill="none" stroke="#C9A84C" stroke-width="4"/><path d="M168 295 C170 340 178 374 182 406" fill="none" stroke="#C9A84C" stroke-width="4"/></svg>
+    <svg class="sec-phoenix-l" width="380" height="460" viewBox="0 0 310 400" fill="none"><ellipse cx="158" cy="222" rx="50" ry="72" fill="#C9A84C"/><path d="M128 195 C83 166 35 152 6 128 C26 143 60 156 90 172 Z" fill="#C9A84C"/><path d="M148 292 C133 335 118 366 94 397" fill="none" stroke="#C9A84C" stroke-width="4"/><path d="M158 297 C153 343 151 378 142 408" fill="none" stroke="#C9A84C" stroke-width="4"/></svg>
+    
+    <div class="si">
+    <div class="torch-div"><div class="tl"></div><span class="tf">🔥</span><div class="tl"></div></div>
+    <p class="ey center">The Capitol</p>
+    <h2 class="st center">Event Director & Coordinators</h2>
+    <div class="dv"></div>
+    <p class="center" style="color:var(--muted);font-size:.86rem;max-width:620px;margin:0 auto 1rem">Behind every great Games is a team who built the arena. Meet the people who pour their heart into making Utah Dance Fest an unforgettable experience year after year.</p>
+    
+    <!-- DIRECTOR — featured large card -->
+    <div style="display:grid;grid-template-columns:260px 1fr;gap:2rem;align-items:center;border:1px solid rgba(201,168,76,.35);background:var(--mid);padding:2rem;margin-bottom:2rem;position:relative;overflow:hidden">
+    <!-- gold top bar -->
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--fire) 20%,var(--g) 50%,var(--gl) 75%,transparent)"></div>
+    <!-- avatar -->
+    <div style="position:relative">
+    <div style="width:100%;aspect-ratio:1;background:var(--char);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.25)">
+    <!-- swap src below with real photo -->
+    <!-- <img src="franz-photo.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"> -->
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1710,#2a2418,#1a1710);background-size:200% 200%;animation:shimmer 3.5s ease infinite"></div>
+    <span style="position:absolute;font-family:var(--hf);font-size:3.5rem;color:var(--g);z-index:1;letter-spacing:.05em">FL</span>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,rgba(139,26,26,.55),rgba(232,68,26,.12),transparent);z-index:2"></div>
+    </div>
+    <div style="margin-top:.8rem;text-align:center">
+    <span style="display:inline-block;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .9rem;border:1px solid rgba(201,168,76,.5);color:var(--g);font-family:var(--bf)">Event Director</span>
+    </div>
+    </div>
+    <!-- bio -->
+    <div>
+    <p style="font-family:var(--bf);font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--g);margin-bottom:.5rem">Founder & Director</p>
+    <h3 style="font-family:var(--hf);font-size:1.8rem;color:var(--gl);line-height:1.05;margin-bottom:.4rem">Franz Lezama-Acharte</h3>
+    <p style="font-family:var(--bf);font-style:italic;font-size:.82rem;color:var(--red);margin-bottom:1rem;letter-spacing:.05em">Ignite Country Fusion</p>
+    <div style="width:40px;height:1px;background:var(--g);opacity:.45;margin-bottom:1rem"></div>
+    <p style="font-size:.88rem;color:rgba(240,230,204,.78);line-height:1.8;margin-bottom:.8rem">The visionary behind Utah's first-ever country dance convention. Franz has dedicated years to building a country dance community in Utah, founding Ignite Country Fusion and dreaming up an event that brings dancers of all levels together under one roof — and one incredible theme.</p>
+    <p style="font-size:.88rem;color:rgba(240,230,204,.78);line-height:1.8">His passion for partner dance, community, and spectacle is the fire that keeps Utah Dance Fest alive. Every year, he makes the Games bigger, bolder, and more unforgettable than the last.</p>
+    <div style="display:flex;gap:1rem;margin-top:1.2rem;flex-wrap:wrap">
+    <a href="tel:8015541876" style="font-family:var(--bf);font-size:.72rem;letter-spacing:.12em;color:var(--g);text-decoration:none">📞 (801) 554-1876</a>
+    <a href="https://www.instagram.com/innovative_dancing_king" target="_blank" style="font-family:var(--bf);font-size:.72rem;letter-spacing:.12em;color:var(--g);text-decoration:none">📸 @innovative_dancing_king</a>
+    </div>
+    </div>
+    </div>
+
+
+    
+    
+    <!-- DIRECTOR — featured large card -->
+    <div style="display:grid;grid-template-columns:260px 1fr;gap:2rem;align-items:center;border:1px solid rgba(201,168,76,.35);background:var(--mid);padding:2rem;margin-bottom:2rem;position:relative;overflow:hidden">
+        <!-- gold top bar -->
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--fire) 20%,var(--g) 50%,var(--gl) 75%,transparent)"></div>
+        <!-- avatar -->
+        <div style="position:relative">
+        <div style="width:100%;aspect-ratio:1;background:var(--char);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.25)">
+        <!-- swap src below with real photo -->
+        <!-- <img src="franz-photo.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"> -->
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1710,#2a2418,#1a1710);background-size:200% 200%;animation:shimmer 3.5s ease infinite"></div>
+        <span style="position:absolute;font-family:var(--hf);font-size:3.5rem;color:var(--g);z-index:1;letter-spacing:.05em">FL</span>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,rgba(139,26,26,.55),rgba(232,68,26,.12),transparent);z-index:2"></div>
+        </div>
+        <div style="margin-top:.8rem;text-align:center">
+        <span style="display:inline-block;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .9rem;border:1px solid rgba(201,168,76,.5);color:var(--g);font-family:var(--bf)">Competition Coordinator</span>
+        </div>
+        </div>
+        <!-- bio -->
+        <div>
+        <p style="font-family:var(--bf);font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--g);margin-bottom:.5rem">Competition & Event Coordinator</p>
+        <h3 style="font-family:var(--hf);font-size:1.8rem;color:var(--gl);line-height:1.05;margin-bottom:.4rem">Russ Bradchulis</h3>
+        <p style="font-family:var(--bf);font-style:italic;font-size:.82rem;color:var(--red);margin-bottom:1rem;letter-spacing:.05em">6x World Champion Country Dancer</p>
+        <div style="width:40px;height:1px;background:var(--g);opacity:.45;margin-bottom:1rem"></div>
+        <p style="font-size:.88rem;color:rgba(240,230,204,.78);line-height:1.8;margin-bottom:.8rem">Russ teaches at events coast to coast. He brings that same energy to Utah Dance Fest as our competion coodinator. With years of experience running competions at every level, he brings precision, structure, and an unmatched understanding of the dancefloor. He's the reason everything runs like clockwork.</p>
+        <p style="font-size:.88rem;color:rgba(240,230,204,.78);line-height:1.8">As a Kickstart Country Instructor, Russ is known for his ability to connect with dancers of every level - making competitions feel less like a battle and more like the moment every tribute has been training for.</p>
+        <!-- <a href="tel:8015541876" style="font-family:var(--bf);font-size:.72rem;letter-spacing:.12em;color:var(--g);text-decoration:none">📞 (801) 554-1876</a> -->
+        <a href="https://www.instagram.com/russbradchulis" target="_blank" style="font-family:var(--bf);font-size:.72rem;letter-spacing:.12em;color:var(--g);text-decoration:none">📸 @russbradchulis</a>
+        </div>
+        </div>
+        </div>
+
+        <!-- DIRECTOR — featured large card -->
+    <div style="display:grid;grid-template-columns:260px 1fr;gap:2rem;align-items:center;border:1px solid rgba(201,168,76,.35);background:var(--mid);padding:2rem;margin-bottom:2rem;position:relative;overflow:hidden">
+        <!-- gold top bar -->
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--fire) 20%,var(--g) 50%,var(--gl) 75%,transparent)"></div>
+        <!-- avatar -->
+        <div style="position:relative">
+        <div style="width:100%;aspect-ratio:1;background:var(--char);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border:1px solid rgba(201,168,76,.25)">
+        <!-- swap src below with real photo -->
+        <!-- <img src="franz-photo.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"> -->
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1a1710,#2a2418,#1a1710);background-size:200% 200%;animation:shimmer 3.5s ease infinite"></div>
+        <span style="position:absolute;font-family:var(--hf);font-size:3.5rem;color:var(--g);z-index:1;letter-spacing:.05em">FL</span>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(to top,rgba(139,26,26,.55),rgba(232,68,26,.12),transparent);z-index:2"></div>
+        </div>
+        <div style="margin-top:.8rem;text-align:center">
+        <span style="display:inline-block;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .9rem;border:1px solid rgba(201,168,76,.5);color:var(--g);font-family:var(--bf)">Event Director</span>
+        </div>
+        </div>
+        <!-- bio -->
+        <div>
+        <p style="font-family:var(--bf);font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--g);margin-bottom:.5rem">Founder & Director</p>
+        <h3 style="font-family:var(--hf);font-size:1.8rem;color:var(--gl);line-height:1.05;margin-bottom:.4rem">Franz Lezama-Acharte</h3>
+        <p style="font-family:var(--bf);font-style:italic;font-size:.82rem;color:var(--red);margin-bottom:1rem;letter-spacing:.05em">Ignite Country Fusion</p>
+        <div style="width:40px;height:1px;background:var(--g);opacity:.45;margin-bottom:1rem"></div>
+        <p style="font-size:.88rem;color:rgba(240,230,204,.78);line-height:1.8;margin-bottom:.8rem">The visionary behind Utah's first-ever country dance convention. Franz has dedicated years to building a country dance community in Utah, founding Ignite Country Fusion and dreaming up an event that brings dancers of all levels together under one roof — and one incredible theme.</p>
+        <p style="font-size:.88rem;color:rgba(240,230,204,.78);line-height:1.8">His passion for partner dance, community, and spectacle is the fire that keeps Utah Dance Fest alive. Every year, he makes the Games bigger, bolder, and more unforgettable than the last.</p>
+        <div style="display:flex;gap:1rem;margin-top:1.2rem;flex-wrap:wrap">
+        <a href="tel:8015541876" style="font-family:var(--bf);font-size:.72rem;letter-spacing:.12em;color:var(--g);text-decoration:none">📞 (801) 554-1876</a>
+        <a href="https://www.instagram.com/utah_dancefest" target="_blank" style="font-family:var(--bf);font-size:.72rem;letter-spacing:.12em;color:var(--g);text-decoration:none">📸 @utah_dancefest</a>
+        </div>
+        </div>
+        </div>
+    
+   
+<!-- ============================================================
+JUDGES — "THE GAMEMAKERS"
+============================================================ -->
+<section class="judges-sec" id="judges">
+
+<div class="si">
+<div class="torch-div"><div class="tl"></div><span class="tf">🔥</span><div class="tl"></div></div>
+<p class="ey center">The Gamemakers</p>
+<h2 class="st center">Meet Your Judges</h2>
+<div class="dv"></div>
+<p class="center" style="color:var(--muted);font-size:.86rem;max-width:600px;margin:0 auto .5rem">Hand-selected for their mastery and eye for excellence. These Gamemakers will witness every move you make on the floor.</p>
+
+<div class="people-grid" id="judges-grid">
+
+<!-- ★ REPLACE TBA with real names, add img src to load photos ★ -->
+<div class="person-card">
+    <div class="p-avatar">
+        <img src="staff/Bameo.jpg" alt="Judge 1">
+    </div>
+    <div class="p-info">
+        <div class="p-role">EmCee & Judge</div>
+        <div class="p-name">Ben & Cameo</div>
+        <div class="p-spec">West Coast Swing</div>
+    </div>
+</div>
+
+<div class="person-card">
+    <div class="p-avatar">
+        <img src="staff/David.jpg" alt="Judge 2">
+    </div>
+    <div class="p-info">
+        <div class="p-role">Judge & Instructor</div>
+        <div class="p-name">David Saylors</div>
+        <div class="p-spec">·Country Swing · West Coast Swing · Country Two-Step</div>
+    </div>
+</div>
+
+<div class="person-card">
+    <div class="p-avatar">
+        <img src="staff/Danya.jpg" alt="Judge 3">
+    </div>
+    <div class="p-info">
+        <div class="p-role">Judge & Instructor</div>
+        <div class="p-name">Danya Svir</div>
+        <div class="p-spec">Country Swing · Country Two-Step · West Coast Swing</div>
+    </div>
+</div>
+
+
+<div class="person-card">
+    <div class="p-avatar">
+        <img src="staff/Elise.jpg" alt="Judge 4">
+    </div>
+    <div class="p-info">
+        <div class="p-role">Head Judge</div>
+        <div class="p-name">Elise Holland</div>
+        <div class="p-spec">Country Swing · West Coast Swing</div>
+    </div>
+</div>
+
+<div class="person-card">
+    <div class="p-avatar">
+        <img src="staff/Ashley.jpg" alt="Judge 5">
+    </div>
+    <div class="p-info">
+        <div class="p-role">Judge & Instructo</div>
+        <div class="p-name">Ashley </div>
+        <div class="p-spec">Country Swing</div>
+    </div>
+</div>
+
+
+<div class="person-card">
+    <div class="p-avatar">
+        <img src="staff/Clay.jpg" alt="Judge 6">
+    </div>
+    <div class="p-info">
+        <div class="p-role">Judge</div>
+        <div class="p-name">Clay</div>
+        <div class="p-spec">Country Two-Step · West Coast Swing</div>
+    </div>
+</div>
+
+<div class="person-card">
+    <div class="p-avatar">
+        <img src="staff/Ellis.jpg" alt="Judge 7">
+    </div>
+    <div class="p-info">
+        <div class="p-role">Judge & Instructor</div>
+        <div class="p-name">Ellis</div>
+        <div class="p-spec">Country Two-Step · West Coast Swing</div>
+    </div>
+</div>
+
+<div class="person-card">
+    <div class="p-avatar">
+        <img src="staff/Kat.jpg" alt="Judge 8">
+    </div>
+    <div class="p-info">
+        <div class="p-role">Judge & Instructor</div>
+        <div class="p-name">Kat Nichols</div>
+        <div class="p-spec">Country Swing · Line Dance</div>
+    </div>
+</div>
+
+
+
+
+</div>
+</div>
+</section>
+
+
+
+<!-- ============================================================
+MENTORS & AMBASSADORS — "THE VICTORS"
+============================================================ -->
+<!-- <section class="mentors-sec" id="mentors">
+<svg class="sec-phoenix" width="380" height="460" viewBox="0 0 310 400" fill="none"><ellipse cx="158" cy="222" rx="50" ry="72" fill="#C9A84C"/><path d="M128 195 C83 166 35 152 6 128 C26 143 60 156 90 172 Z" fill="#C9A84C"/><path d="M148 292 C133 335 118 366 94 397" fill="none" stroke="#C9A84C" stroke-width="4"/><path d="M158 297 C153 343 151 378 142 408" fill="none" stroke="#C9A84C" stroke-width="4"/><path d="M168 295 C170 340 178 374 182 406" fill="none" stroke="#C9A84C" stroke-width="4"/></svg>
+
+<div class="si">
+<div class="torch-div"><div class="tl"></div><span class="tf">🔥</span><div class="tl"></div></div>
+<p class="ey center">The Victors & Allies</p>
+<h2 class="st center">Mentors & Ambassadors</h2>
+<div class="dv"></div>
+<p class="center" style="color:var(--muted);font-size:.86rem;max-width:600px;margin:0 auto .5rem">Every tribute needs a mentor. These champions have risen from the arena and returned to guide the next generation.</p> -->
+
+<!-- MENTORS -->
+<!-- <div class="sub-lbl gold">Mentors</div>
+<div class="people-grid" id="mentors-grid">
+
+
+    <div class="person-card">
+        <div class="p-avatar">
+            <img src="staff/Ashley.jpg" alt="Judge 5">
+        </div>
+        <div class="p-info">
+            <div class="p-role">Head Judge</div>
+            <div class="p-name">Ashley </div>
+            <div class="p-spec">Country Swing</div>
+        </div>
+    </div>
+
+<div class="person-card">
+<div class="p-avatar">
+<div class="p-avatar-bg"></div>
+<span class="p-initials">TBA</span>
+<div class="p-fire-bar"></div>
+</div>
+<div class="p-info">
+<div class="p-role">Mentor · Workshop Instructor</div>
+<div class="p-name">Name Coming Soon</div>
+<div class="p-spec">West Coast Swing · Footwork</div>
+<span class="p-tag mt">Mentor</span>
+</div>
+</div>
+
+<div class="person-card">
+<div class="p-avatar">
+<div class="p-avatar-bg"></div>
+<span class="p-initials">TBA</span>
+<div class="p-fire-bar"></div>
+</div>
+<div class="p-info">
+<div class="p-role">Mentor · Workshop Instructor</div>
+<div class="p-name">Name Coming Soon</div>
+<div class="p-spec">Line Dance · Choreography</div>
+<span class="p-tag mt">Mentor</span>
+</div>
+</div>
+
+<div class="person-card">
+<div class="p-avatar">
+<div class="p-avatar-bg"></div>
+<span class="p-initials">TBA</span>
+<div class="p-fire-bar"></div>
+</div>
+<div class="p-info">
+<div class="p-role">Mentor · Workshop Instructor</div>
+<div class="p-name">Name Coming Soon</div>
+<div class="p-spec">Nightclub Two-Step · Waltz</div>
+<span class="p-tag mt">Mentor</span>
+</div>
+</div>
+
+<div class="person-card add-card">
+<span class="add-icon">✦</span>
+<span class="add-lbl">More Mentors<br>Announced Soon</span>
+</div>
+
+</div> -->
+
+<!-- AMBASSADORS -->
+<!-- <div class="sub-lbl green" style="margin-top:3.5rem">Ambassadors</div>
+<div class="people-grid" id="ambassadors-grid">
+
+<div class="person-card">
+<div class="p-avatar">
+<div class="p-avatar-bg"></div>
+<span class="p-initials">TBA</span>
+<div class="p-fire-bar"></div>
+</div>
+<div class="p-info">
+<div class="p-role">Community Ambassador</div>
+<div class="p-name">Name Coming Soon</div>
+<div class="p-spec">Utah Dance Community</div>
+<span class="p-tag at">Ambassador</span>
+</div>
+</div>
+
+<div class="person-card">
+<div class="p-avatar">
+<div class="p-avatar-bg"></div>
+<span class="p-initials">TBA</span>
+<div class="p-fire-bar"></div>
+</div>
+<div class="p-info">
+<div class="p-role">Regional Ambassador</div>
+<div class="p-name">Name Coming Soon</div>
+<div class="p-spec">Salt Lake City Region</div>
+<span class="p-tag at">Ambassador</span>
+</div>
+</div>
+
+<div class="person-card">
+<div class="p-avatar">
+<div class="p-avatar-bg"></div>
+<span class="p-initials">TBA</span>
+<div class="p-fire-bar"></div>
+</div>
+<div class="p-info">
+<div class="p-role">Social Media Ambassador</div>
+<div class="p-name">Name Coming Soon</div>
+<div class="p-spec">@utah_dancefest</div>
+<span class="p-tag at">Ambassador</span>
+</div>
+</div>
+
+<div class="person-card add-card">
+<span class="add-icon">✦</span>
+<span class="add-lbl">More Ambassadors<br>Announced Soon</span>
+</div>
+
+</div>
+</div>
+</section> -->
+
+<!-- TESTIMONIALS -->
+<section class="testi-sec">
+<div class="si">
+<p class="ey center">From the Districts</p>
+<h2 class="st center">What Tributes Say</h2>
+<div class="dv"></div>
+<div class="tgrid">
+<div class="tcard"><p class="ttext">I've been to events all over the country and Utah Dance Fest blew me away. The instructors were world-class, the social dances went all night, and the community is unlike anything I've experienced. Already counting down to next year.</p><p class="tauthor">— Kayla M.</p></div>
+<div class="tcard"><p class="ttext">Came as a complete beginner and left with new friends, and a completely new obsession. Nobody made me feel out of place.</p><p class="tauthor">— Jake T.</p></div>
+<div class="tcard"><p class="ttext">The competition energy was electric. Competing was one of the most exhilarating things I've ever done. </p><p class="tauthor">— Shea R.</p></div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+<div class="si">
+<p class="ey center">Tribute Briefing</p>
+<h2 class="st center">Frequently Asked Questions</h2>
+<div class="dv"></div>
+<div class="faq-list">
+<div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Do I need dance experience to attend? <span class="faq-arr">▼</span></button><div class="faq-a">Absolutely not! Utah Dance Fest welcomes all experience levels — from complete beginners to seasoned champions. We have workshops designed for first-timers and the community is famously welcoming to newcomers.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Do I need a partner to attend? <span class="faq-arr">▼</span></button><div class="faq-a">Nope! Many attendees come solo. Social dances are a great place to meet partners, and our rotation-based workshops ensure everyone dances with multiple people all weekend.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tFaq(this)">What pass do I need to compete? <span class="faq-arr">▼</span></button><div class="faq-a">A General Admission (Tribute) pass or higher is required to enter competitions. The District Pass covers socials and evening events only. If you plan to compete, go Tribute or above.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tFaq(this)">What styles of dance are featured? <span class="faq-arr">▼</span></button><div class="faq-a">Utah Dance Fest is a Country Partner and Line Dance event. Styles include Country Swing, West Coast Swing, Progressive, and Line Dancing across all levels.</div></div>
+<div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Can I upgrade my pass after purchasing? <span class="faq-arr">▼</span></button><div class="faq-a">Yes, upgrades available subject to availability. Contact Franz at (801) 554-1876. </div></div>
+<div class="faq-item"><button class="faq-q" onclick="tFaq(this)">What if I won a pass through a comp/giveaway? <span class="faq-arr">▼</span></button><div class="faq-a">Use the promo code to buy your passes. Contact Franz at (801) 554-1876 with any questions. </div></div>
+<div class="faq-item"><button class="faq-q" onclick="tFaq(this)">Which airport should I fly into? <span class="faq-arr">▼</span></button><div class="faq-a">The best option is the Salt Lake City (SLC) Airport or the Provo Airport. </div></div>
+
+</div>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="fcta" id="register">
+<div class="si">
+<p class="ey center">The Reaping Is Now</p>
+<h2 class="fcta-t">Your District Needs You</h2>
+<p class="fcta-s">Four days. Hundreds of dancers. One unforgettable weekend in Salt Lake City. Don't let someone else claim your spot on the floor.</p>
+<div style="display:flex;gap:1.1rem;justify-content:center;flex-wrap:wrap">
+<a href="https://www.danceplace.com/index/no/15853/Utah+Dance+Fest-2026-Orem_+UT-United+States-Country+Dance+event" target="_blank" class="btn-p">Claim Your Pass Now →</a>
+<a href="tel:8015541876" class="btn-s">Call (801) 554-1876</a>
+</div>
+<p style="margin-top:1.8rem;font-size:.73rem;color:var(--muted)">September 17–20, 2026 &nbsp;·&nbsp; Salt Lake City, Utah &nbsp;·&nbsp; Organized by Ignite Country Fusion</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="flogo">Utah Dance Fest · The 2026 Games</div>
+<ul class="flinks">
+<li><a href="#about">About</a></li>
+<li><a href="#judges">Judges</a></li>
+<li><a href="#mentors">Mentors</a></li>
+<li><a href="#passes">Passes</a></li>
+<li><a href="#schedule">Schedule</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="https://www.instagram.com/utah_dancefest" target="_blank">Instagram</a></li>
+<li><a href="https://www.danceplace.com/index/no/15853/Utah+Dance+Fest-2026-Orem_+UT-United+States-Country+Dance+event" target="_blank">Register</a></li>
+</ul>
+<p class="fcopy">© 2026 Utah Dance Fest · Ignite Country Fusion · Franz Lezama-Acharte · (801) 554-1876</p>
+<p class="fcopy" style="margin-top:.4rem;font-size:.62rem">To retheme next year: update the CSS :root variables at the top of the stylesheet.</p>
+</footer>
+
+<script>
+/* ======================================================
+EMBER PARTICLES
+====================================================== */
+const ec = document.getElementById('embers');
+for(let i=0;i<60;i++){
+const e=document.createElement('div');
+e.className='ember';
+const sz=1+Math.random()*4;
+const hot=Math.random()>.45;
+e.style.cssText=`left:${Math.random()*100}%;width:${sz}px;height:${sz}px;background:${hot?'#E8441A':'#C9A84C'};animation-duration:${3+Math.random()*8}s;animation-delay:${Math.random()*9}s;--dx:${(Math.random()-.5)*160}px;`;
+ec.appendChild(e);
+}
+
+
+
+/* ======================================================
+COUNTDOWN
+====================================================== */
+function tick(){
+const d=new Date('2026-09-17T16:00:00')-new Date();
+if(d<=0)return;
+document.getElementById('cdd').textContent=String(Math.floor(d/86400000)).padStart(2,'0');
+document.getElementById('cdh').textContent=String(Math.floor(d%86400000/3600000)).padStart(2,'0');
+document.getElementById('cdm').textContent=String(Math.floor(d%3600000/60000)).padStart(2,'0');
+document.getElementById('cds2').textContent=String(Math.floor(d%60000/1000)).padStart(2,'0');
+}
+tick();setInterval(tick,1000);
+
+/* sticky nav */
+window.addEventListener('scroll',()=>document.getElementById('nb').classList.toggle('scrolled',scrollY>80));
+
+/* schedule tabs */
+function showDay(day,btn){
+document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.spanel').forEach(p=>p.classList.remove('active'));
+document.getElementById('day-'+day).classList.add('active');
+btn.classList.add('active');
+}
+
+/* FAQ */
+function tFaq(btn){
+const a=btn.nextElementSibling,open=a.classList.contains('open');
+document.querySelectorAll('.faq-a').forEach(x=>x.classList.remove('open'));
+document.querySelectorAll('.faq-q').forEach(x=>x.classList.remove('open'));
+if(!open){a.classList.add('open');btn.classList.add('open');}
+}
+</script>
+</body>
+</html>
